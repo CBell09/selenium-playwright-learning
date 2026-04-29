@@ -1,0 +1,13 @@
+{
+  "name": "playwright-typescript",
+  "version": "1.0.0",
+  "description": "Playwright TypeScript learning project",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@next/env": "^14.1.4",
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.30"
+  }
+}

@@ -1,0 +1,33 @@
+name: Selenium Advanced Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: selenium-advanced
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run Gradle test
+        run: ./gradlew test --info
+        env:
+          BROWSER: CHROME
+          TESTHOST: GRADLE
+          SEL_LOG_LEVEL: INFO
+          TAGS: TESTS

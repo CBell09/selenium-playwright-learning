@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+build-cache/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Node / Playwright
+node_modules/
+playwright-report/
+test-results/
+package-lock.json
+
+# Environment files
+.env
+secrets.env
+
+# Test artifacts
+recordings/
+/tmp/videos/
+
+# OS
+.DS_Store
+Thumbs.db
