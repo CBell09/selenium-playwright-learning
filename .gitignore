@@ -13,6 +13,7 @@ build-cache/
 node_modules/
 playwright-report/
 test-results/
+allure-results/
 package-lock.json
 
 # Environment files

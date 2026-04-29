@@ -21,6 +21,7 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
     implementation 'org.seleniumhq.selenium:selenium-devtools-v114:4.11.0'
     implementation('com.titusfortner:selenium-logger:1.1')
+    testImplementation 'io.qameta.allure:allure-junit5:2.27.0'
 
 }
 
@@ -30,7 +31,7 @@ test {
     systemProperty "testHost", System.getenv("TESTHOST") ? System.getenv("TESTHOST") : 'DOCKER'
     systemProperty "gradleLogLevel",System.getenv("GRADLE_LOG_LEVEL") ? System.getenv("GRADLE_LOG_LEVEL") : 'DEBUG'
     systemProperty "seleniumLogLevel",System.getenv("SEL_LOG_LEVEL") ? System.getenv("SEL_LOG_LEVEL") : 'INFO'
-    String itags = System.getenv("TAGS").toUpperCase(Locale.US)
+    String itags = System.getenv("TAGS") ? System.getenv("TAGS").toUpperCase(Locale.US) : 'TESTS'
     useJUnitPlatform{
         includeTags itags
     }

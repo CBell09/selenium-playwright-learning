@@ -8,6 +8,7 @@
   "devDependencies": {
     "@next/env": "^14.1.4",
     "@playwright/test": "^1.42.1",
-    "@types/node": "^20.11.30"
+    "@types/node": "^20.11.30",
+    "allure-playwright": "^2.15.0"
   }
 }

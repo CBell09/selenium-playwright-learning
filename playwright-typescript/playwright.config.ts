@@ -10,6 +10,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
+    ["allure-playwright", { detail: true, outputFolder: "allure-results" }],
     ["html", { open: "never", outputFolder: "playwright-report/testHTMLReports" }],
     ["junit", { outputFile: "playwright-report/testXMLFiles/results.xml" }],
   ],
