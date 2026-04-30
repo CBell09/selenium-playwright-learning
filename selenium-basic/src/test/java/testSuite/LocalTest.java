@@ -13,9 +13,10 @@ public class LocalTest {
     @BeforeEach
     public void setup(){
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=2560x1440");
-        options.addArguments("--remote-debugging-pipe");
-//        options.addArguments("--headless=new");
         driver = new ChromeDriver(options);
     }
 

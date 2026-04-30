@@ -52,9 +52,9 @@ public class BaseTest {
         switch (desiredWebDriver.toUpperCase(Locale.US)) {
             case "CHROME": {
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--verbose");
-//                options.addArguments("--headless");
+                options.addArguments("--headless=new");
                 options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
                 if (System.getenv("TESTHOST").equals("GRADLE")) {
                     driver = new ChromeDriver(options);
@@ -65,9 +65,9 @@ public class BaseTest {
             }
             case "EDGE": {
                 EdgeOptions options = new EdgeOptions();
-                options.addArguments("--verbose");
-//                options.addArguments("--headless");
+                options.addArguments("--headless=new");
                 options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
                 if (System.getenv("TESTHOST").equals("GRADLE")) {
                     driver = new EdgeDriver(options);
@@ -79,8 +79,7 @@ public class BaseTest {
 
             case "FIREFOX": {
                 FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--verbose");
-//                options.addArguments("--headless");
+                options.addArguments("--headless");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--window-size=1920,1080");
                 if (System.getenv("TESTHOST").equals("GRADLE")) {
