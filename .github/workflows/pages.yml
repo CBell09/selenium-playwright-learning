@@ -21,8 +21,8 @@ jobs:
       run:
         working-directory: selenium-basic
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           java-version: '11'
           distribution: temurin
@@ -31,7 +31,7 @@ jobs:
       - name: Run tests
         run: ./gradlew test --info
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: allure-results-selenium-basic
@@ -44,8 +44,8 @@ jobs:
       run:
         working-directory: selenium-advanced
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           java-version: '11'
           distribution: temurin
@@ -59,7 +59,7 @@ jobs:
           TESTHOST: GRADLE
           SEL_LOG_LEVEL: INFO
           TAGS: TESTS
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: allure-results-selenium-advanced
@@ -72,8 +72,8 @@ jobs:
       run:
         working-directory: playwright-typescript
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: lts/*
       - name: Install dependencies
@@ -85,7 +85,7 @@ jobs:
         continue-on-error: true
         env:
           TESTURL: https://playwright.dev
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: allure-results-playwright
@@ -100,7 +100,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: all-results
       - name: Install Allure CLI
@@ -141,26 +141,26 @@ jobs:
             <div class="grid">
               <a class="card" href="selenium-basic/">
                 <h2>Selenium Basic</h2>
-                <p><span class="tag">Java</span><span class="tag">Selenium 4.13</span></p>
+                <p><span class="tag">Java</span><span class="tag">Selenium 4.33</span></p>
                 <p>Direct ChromeDriver setup, single test — the starting point.</p>
               </a>
               <a class="card" href="selenium-advanced/">
                 <h2>Selenium Advanced</h2>
-                <p><span class="tag">Java</span><span class="tag">Selenium 4.11</span></p>
+                <p><span class="tag">Java</span><span class="tag">Selenium 4.33</span></p>
                 <p>Base class pattern, multi-browser, Docker Grid, JUnit tags, parallel execution.</p>
               </a>
               <a class="card" href="playwright-ts/">
                 <h2>Playwright TypeScript</h2>
-                <p><span class="tag">TypeScript</span><span class="tag">Playwright 1.42</span></p>
+                <p><span class="tag">TypeScript</span><span class="tag">Playwright 1.59</span></p>
                 <p>Multi-browser, env-driven URLs, trace and video on failure.</p>
               </a>
             </div>
           </body>
           </html>
           EOF
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
