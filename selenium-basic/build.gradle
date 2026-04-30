@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.12.0'
 }
 
 group = 'org.example'
@@ -7,6 +8,14 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    adapter {
+        autoconfigure = true
+        aspectjWeaver = true
+    }
+    version = '2.27.0'
 }
 
 dependencies {
@@ -18,8 +27,6 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-devtools-v117:4.13.0'
     implementation 'com.titusfortner:selenium-logger:2.2.1'
     implementation 'commons-codec:commons-codec:1.16.0'
-    testImplementation 'io.qameta.allure:allure-junit5:2.27.0'
-
 }
 
 test {
